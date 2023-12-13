@@ -1,0 +1,41 @@
+---
+- name: Installation de Nginx, PostgreSQL, Docker et Git
+  hosts: node1
+  become: yes
+  tasks:
+    - name: Installation de Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Installation de PostgreSQL
+      apt:
+        name: postgresql
+        state: present
+
+    - name: Installation de Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Installation de Git
+      apt:
+        name: git
+        state: present
+
+    - name: Configuration de PostgreSQL
+      postgresql_user:
+        db: postgres
+        name: utilisateur_db
+        password: mot_de_passe_db
+        state: present
+
+    - name: Démarrage du service Nginx
+      service:
+        name: nginx
+        state: started
+
+    - name: Démarrage du service PostgreSQL
+      service:
+        name: postgresql
+        state: started

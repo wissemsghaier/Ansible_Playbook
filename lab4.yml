@@ -1,0 +1,13 @@
+---
+- name: solution
+  hosts: all
+  tasks:
+    - name: Run a command
+      command: free -h
+      register: freemen
+    - name: display free memory
+      debug:
+        msg: "{{ freemem.stdout }}"
+    - name: Display IPv4 address
+      debug:
+        msg: "{{ ansible_facts.default_ipv4.address }}"

@@ -1,0 +1,14 @@
+---
+- name: labo3 play
+  hosts: all
+  tasks:
+    - name: install nmap
+      package:
+        name: nmap
+        state: present
+    - name: create un archive
+      archive:
+        path: /home
+        dest: /tmp/home.tar.bz2
+        format: bz2
+

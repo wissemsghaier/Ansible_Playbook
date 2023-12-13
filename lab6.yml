@@ -1,0 +1,14 @@
+---
+- name: Lab 6 Solution
+  hosts: all
+  tasks:
+    - name: Install nfs-utils on CentOS servers
+      block:
+        - name: install nfs
+          yum:
+            name: nfs-utils
+          when: ansible_facts['distribution'] == "CentOS"
+      rescue:
+        - name: check system
+          debug:
+            msg: "le systeme not centOS"

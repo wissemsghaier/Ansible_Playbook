@@ -1,0 +1,5 @@
+- name: Using httpd-role
+  hosts: node1
+  roles:
+    - role: httpd-role
+      sysadmin: elliot@control

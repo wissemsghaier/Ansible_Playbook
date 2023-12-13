@@ -1,0 +1,19 @@
+---
+- name: install and start apache
+  hosts: node2
+  tasks:
+    - name: install and start  apache
+      block:
+        - name: install httpd
+          apt:
+            name: install httpd
+            state: latest
+        - name: start httpd
+          service:
+            name: httpd
+            state: started
+            enabled: yes
+      rescue:
+        - name: This will not run
+          debug:
+            msg: "Errors were ignored! ... not going to run."
